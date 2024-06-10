@@ -67,13 +67,14 @@ public class BackgroundJobAppService : SampleAppServiceBase, IBackgroundJobAppSe
         await _backgroundJobLauncher.StopAsync(request.Id.ToString());
     }
 
-    public Task<ListResponse<KeyValuePair<string, string>>> GetExposedBackgroundJobsAsync()
+    public async Task<ListResponse<KeyValuePair<string, string>>> GetExposedBackgroundJobsAsync()
     {
-        var exposedBackgroundJobs = AssemblyHelper.GetReferencedAssemblies()
-            .SelectMany(a => a.GetTypes().Where(t => t.IsDefined(typeof(ExposedJobAttribute), true)));
-        return Task.FromResult(new ListResponse<KeyValuePair<string, string>>(exposedBackgroundJobs
-            .ToDictionary(t => t.FullName!,
-                t => t.GetCustomAttribute<ExposedJobAttribute>()!.Description).ToList()));
+        // var exposedBackgroundJobs = AssemblyHelper.GetReferencedAssemblies()
+        //     .SelectMany(a => a.GetTypes().Where(t => t.IsDefined(typeof(ExposedJobAttribute), true)));
+        // return Task.FromResult(new ListResponse<KeyValuePair<string, string>>(exposedBackgroundJobs
+        //     .ToDictionary(t => t.FullName!,
+        //         t => $"{t.GetCustomAttribute<ExposedJobAttribute>()!.Description}-{t.FullName}").ToList()));
+        return new ListResponse<KeyValuePair<string, string>>((await _backgroundJobManager.GetExposedBackgroundJobsAsync()).ToList());
     }
 
     public async Task ChangeBackgroundJobStatusAsync(ChangeBackgroundJobStatusRequest request)

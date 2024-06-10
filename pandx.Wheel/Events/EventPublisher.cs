@@ -3,7 +3,6 @@ using Microsoft.Extensions.Logging;
 
 namespace pandx.Wheel.Events;
 
-//此处的事件发布不在Infrastructure实现，因为已经和MediatR深度耦合，放在Infrastructure实现已经没有意义了
 public class EventPublisher : IEventPublisher
 {
     private readonly ILogger<EventPublisher> _logger;

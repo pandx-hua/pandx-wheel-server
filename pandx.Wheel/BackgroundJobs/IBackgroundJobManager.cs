@@ -10,4 +10,5 @@ public interface IBackgroundJobManager : ITransientDependency
     Task<BackgroundJobInfo> GetAsync(Guid id);
     Task<IQueryable<BackgroundJobInfo>> GetAllAsync();
     Task<List<JobExecutionInfo>> GetJobExecutionsAsync(Guid backgroundJobId);
+    Task<Dictionary<string, string>> GetExposedBackgroundJobsAsync();
 }

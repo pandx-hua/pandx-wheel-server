@@ -8,12 +8,13 @@
         <Title>pandx.Wheel</Title>
         <PackageIcon>pandx.png</PackageIcon>
         <Authors>HuaHai</Authors>
-        <Version>1.0.4</Version>
+        <Version>1.0.7</Version>
         <Company>pandx.com.cn</Company>
         <Description>一个开源的基于DDD的WEB应用快速开发框架</Description>
-        <PackageProjectUrl>https://github.com/pandx-hua/pandx.Wheel</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/pandx-hua/pandx.Wheel</RepositoryUrl>
+        <PackageProjectUrl>http://www.pandx.com.cn</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/pandx-hua/pandx-wheel-server</RepositoryUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+      <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
     <ItemGroup>
@@ -48,6 +49,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Include="..\README.md">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
       <None Include="C:\Users\pandx\Desktop\pandx.png">
         <Pack>True</Pack>
         <PackagePath>\</PackagePath>

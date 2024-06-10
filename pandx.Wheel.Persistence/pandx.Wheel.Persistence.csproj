@@ -8,16 +8,21 @@
         <Title>pandx.Wheel.Persistence</Title>
         <Authors>HuaHai</Authors>
         <Company>pandx.com.cn</Company>
-        <Version>1.0.4</Version>
+        <Version>1.0.7</Version>
         <Description>一个开源的基于DDD的WEB应用快速开发框架（持久化层）</Description>
-        <PackageProjectUrl>https://github.com/pandx-hua/pandx.Wheel</PackageProjectUrl>
+        <PackageProjectUrl>http://www.pandx.com.cn</PackageProjectUrl>
         <PackageIcon>pandx.png</PackageIcon>
-        <RepositoryUrl>https://github.com/pandx-hua/pandx.Wheel</RepositoryUrl>
+        <RepositoryUrl>https://github.com/pandx-hua/pandx-wheel-server</RepositoryUrl>
         <Authors>HuaHai</Authors>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+      <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
     <ItemGroup>
+      <None Include="..\README.md">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
       <None Include="C:\Users\pandx\Desktop\pandx.png">
         <Pack>True</Pack>
         <PackagePath>\</PackagePath>

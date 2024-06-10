@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using pandx.Wheel.Domain.Repositories;
 using pandx.Wheel.Domain.UnitOfWork;
+using pandx.Wheel.Helpers;
 
 namespace pandx.Wheel.BackgroundJobs;
 
@@ -57,5 +59,14 @@ public class BackgroundJobManager : IBackgroundJobManager
     public async Task<IQueryable<BackgroundJobInfo>> GetAllAsync()
     {
         return await _backgroundJobRepository.GetAllAsync();
+    }
+
+    public  Task<Dictionary<string, string>> GetExposedBackgroundJobsAsync()
+    {
+        var exposedBackgroundJobs = AssemblyHelper.GetReferencedAssemblies()
+            .SelectMany(a => a.GetTypes().Where(t => t.IsDefined(typeof(ExposedJobAttribute), true)));
+         return Task.FromResult(exposedBackgroundJobs
+            .ToDictionary(t => t.FullName!,
+                t => $"{t.FullName}（{t.GetCustomAttribute<ExposedJobAttribute>()!.Description}）"));
     }
 }
