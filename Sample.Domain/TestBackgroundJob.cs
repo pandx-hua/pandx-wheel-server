@@ -11,9 +11,6 @@ public class TestBackgroundJob : BackgroundJob
     public override Task Execute(IJobExecutionContext context)
     {
         Console.WriteLine("TestBackground running.......");
-        // throw new JobExecutionException(new Exception("xxxx"), true);
-
-
         return Task.CompletedTask;
     }
 }

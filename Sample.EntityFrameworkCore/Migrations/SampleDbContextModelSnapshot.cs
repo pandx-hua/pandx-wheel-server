@@ -374,7 +374,7 @@ namespace Sample.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Book");
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("pandx.Wheel.Auditing.AuditingInfo", b =>

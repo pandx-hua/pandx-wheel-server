@@ -12,6 +12,11 @@ public class SamplePermissionProvider : PermissionProvider
         //books
         var books = pages.CreateChildPermission(SamplePermissions.Resources.Books, SamplePermissions.Actions.Empty,
             "图书");
+        books.CreateChildPermission(SamplePermissions.Resources.Users, SamplePermissions.Actions.Search, "查询图书");
+        books.CreateChildPermission(SamplePermissions.Resources.Users, SamplePermissions.Actions.Browse, "浏览图书");
+        books.CreateChildPermission(SamplePermissions.Resources.Users, SamplePermissions.Actions.Create, "新建图书");
+        books.CreateChildPermission(SamplePermissions.Resources.Users, SamplePermissions.Actions.Update, "编辑图书");
+        books.CreateChildPermission(SamplePermissions.Resources.Users, SamplePermissions.Actions.Delete, "删除图书");
         //administration
         var administration = pages.CreateChildPermission(SamplePermissions.Resources.Administration,
             SamplePermissions.Actions.Empty, "系统管理");

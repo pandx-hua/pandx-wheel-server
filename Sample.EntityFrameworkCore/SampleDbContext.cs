@@ -5,6 +5,7 @@ using pandx.Wheel.Events;
 using pandx.Wheel.Persistence.EntityFrameworkCore;
 using Sample.Domain.Authorization.Roles;
 using Sample.Domain.Authorization.Users;
+using Sample.Domain.Books;
 
 namespace Sample.EntityFrameworkCore;
 
@@ -15,8 +16,10 @@ public class
         ILogger<WheelDbContext<ApplicationUser, ApplicationRole, ApplicationUserClaim, ApplicationRoleClaim>> logger) :
         base(options, eventPublisher, currentUser, logger)
     {
+       
     }
 
+    public DbSet<Book> Books { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

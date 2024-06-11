@@ -3,7 +3,7 @@ using pandx.Wheel.Validation;
 
 namespace Sample.Application.Authorization.Users.Dto;
 
-public class CreateOrUpdateUserRequest
+public class CreateOrUpdateUserRequest:IShouldValidate
 {
     public UserDto User { get; set; } = default!;
     public List<string> AssignedRoleNames { get; set; } = default!;

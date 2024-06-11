@@ -12,8 +12,8 @@ using Sample.EntityFrameworkCore;
 namespace Sample.EntityFrameworkCore.Migrations
 {
     [DbContext(typeof(SampleDbContext))]
-    [Migration("20240520095538_init")]
-    partial class init
+    [Migration("20240611085520_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -197,6 +197,9 @@ namespace Sample.EntityFrameworkCore.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<Guid?>("AvatarId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -374,7 +377,7 @@ namespace Sample.EntityFrameworkCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Book");
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("pandx.Wheel.Auditing.AuditingInfo", b =>
@@ -427,6 +430,39 @@ namespace Sample.EntityFrameworkCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Auditing");
+                });
+
+            modelBuilder.Entity("pandx.Wheel.Authorization.Logins.LoginAttempt", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("BrowserInfo")
+                        .HasMaxLength(512)
+                        .HasColumnType("nvarchar(512)");
+
+                    b.Property<string>("ClientIpAddress")
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Result")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserNameOrEmail")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LoginAttempts");
                 });
 
             modelBuilder.Entity("pandx.Wheel.BackgroundJobs.BackgroundJobInfo", b =>
@@ -510,14 +546,14 @@ namespace Sample.EntityFrameworkCore.Migrations
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Exception")
+                        .HasMaxLength(10240)
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("JobName")
                         .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("Message")
-                        .HasMaxLength(10240)
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Result")
                         .HasColumnType("bit");
@@ -761,6 +797,40 @@ namespace Sample.EntityFrameworkCore.Migrations
                     b.HasIndex("OrganizationId", "UserId");
 
                     b.ToTable("UserOrganizations");
+                });
+
+            modelBuilder.Entity("pandx.Wheel.Storage.BinaryObject", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte[]>("Bytes")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("ContentType")
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(512)
+                        .HasColumnType("nvarchar(512)");
+
+                    b.Property<string>("FileName")
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.Property<long>("Length")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BinaryObjects");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>

@@ -8,8 +8,7 @@ public class UserCreatedEventHandler : NotificationEventHandler<UserCreatedEvent
 {
     protected override Task Handle(UserCreatedEvent<ApplicationUser> @event, CancellationToken cancellationToken)
     {
-        Console.WriteLine($"用户创建成功了 {@event.User.Name} ");
-        //TODO
+        Console.WriteLine($"用户创建成功: {@event.User.Name} ");
         return Task.CompletedTask;
         ;
     }

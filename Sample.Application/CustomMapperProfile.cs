@@ -13,12 +13,14 @@ using Sample.Application.Authorization.Roles.Dto;
 using Sample.Application.Authorization.Users.Dto;
 using Sample.Application.Authorization.Users.Importing.Dto;
 using Sample.Application.BackgroundJobs.Dto;
+using Sample.Application.Books.Dto;
 using Sample.Application.Menus.Dto;
 using Sample.Application.Notifications.Dto;
 using Sample.Application.Organizations.Dto;
 using Sample.Application.Personal.Dto;
 using Sample.Domain.Authorization.Roles;
 using Sample.Domain.Authorization.Users;
+using Sample.Domain.Books;
 
 namespace Sample.Application;
 
@@ -60,6 +62,7 @@ public class CustomMapperProfile : Profile
 
         CreateMap<AuditingInfo, AuditingDto>();
 
+        CreateMap<BookDto, Book>().ReverseMap();
         //此处的Map用于深拷贝
         CreateMap<Menu, Menu>();
     }

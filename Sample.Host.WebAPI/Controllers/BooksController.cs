@@ -40,7 +40,7 @@ public class BookController : WheelControllerBase
     {
         await _bookAppService.DeleteBookAsync(request);
     }
-    [NeedPermission(SamplePermissions.Resources.Books, SamplePermissions.Actions.Browse)]
+    [NeedPermission(SamplePermissions.Resources.Books, SamplePermissions.Actions.Search)]
     [HttpPost(Name = nameof(GetPagedBooks))]
     [NoAudited]
     public async Task<PagedResponse<BookDto>> GetPagedBooks(GetBooksRequest request)

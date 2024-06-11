@@ -9,7 +9,7 @@ using pandx.Wheel.Validation;
 
 namespace Sample.Application.Books.Dto
 {
-    public class CreateOrUpdateBookRequest
+    public class CreateOrUpdateBookRequest:IShouldValidate
     {
        public BookDto Book { get; set; } = default!;
     }

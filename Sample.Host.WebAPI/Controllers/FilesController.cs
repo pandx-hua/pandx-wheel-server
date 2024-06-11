@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using pandx.Wheel.Auditing;
 using pandx.Wheel.Controllers;
 using pandx.Wheel.Exceptions;
@@ -8,7 +9,7 @@ using pandx.Wheel.Storage;
 using Sample.Application.Files.Dto;
 
 namespace Sample.Host.WebAPI.Controllers;
-
+[Authorize]
 [ApiController]
 [Route("[controller]/[action]")]
 public class FilesController : WheelControllerBase

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using pandx.Wheel.Auditing;
 using pandx.Wheel.Authorization.Permissions;
 using pandx.Wheel.Controllers;
@@ -12,7 +13,7 @@ using Sample.Application.Personal;
 using Sample.Application.Personal.Dto;
 
 namespace Sample.Host.WebAPI.Controllers;
-
+[Authorize]
 [ApiController]
 [Route("[controller]/[action]")]
 public class PersonalController : WheelControllerBase

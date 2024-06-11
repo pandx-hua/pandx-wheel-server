@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Sample.EntityFrameworkCore.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -61,7 +61,24 @@ namespace Sample.EntityFrameworkCore.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Book",
+                name: "BinaryObjects",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Bytes = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
+                    ContentType = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
+                    FileName = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
+                    Length = table.Column<long>(type: "bigint", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BinaryObjects", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Books",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -77,7 +94,7 @@ namespace Sample.EntityFrameworkCore.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Book", x => x.Id);
+                    table.PrimaryKey("PK_Books", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -91,11 +108,28 @@ namespace Sample.EntityFrameworkCore.Migrations
                     EndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Duration = table.Column<int>(type: "int", nullable: false),
                     Result = table.Column<bool>(type: "bit", nullable: false),
-                    Message = table.Column<string>(type: "nvarchar(max)", maxLength: 10240, nullable: true)
+                    Exception = table.Column<string>(type: "nvarchar(max)", maxLength: 10240, nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_JobExecutions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LoginAttempts",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    UserNameOrEmail = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
+                    ClientIpAddress = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: true),
+                    BrowserInfo = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: true),
+                    Result = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LoginAttempts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -220,6 +254,7 @@ namespace Sample.EntityFrameworkCore.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    AvatarId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -472,10 +507,16 @@ namespace Sample.EntityFrameworkCore.Migrations
                 name: "BackgroundJobs");
 
             migrationBuilder.DropTable(
-                name: "Book");
+                name: "BinaryObjects");
+
+            migrationBuilder.DropTable(
+                name: "Books");
 
             migrationBuilder.DropTable(
                 name: "JobExecutions");
+
+            migrationBuilder.DropTable(
+                name: "LoginAttempts");
 
             migrationBuilder.DropTable(
                 name: "Notifications");

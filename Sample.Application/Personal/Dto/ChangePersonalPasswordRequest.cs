@@ -3,7 +3,7 @@ using pandx.Wheel.Validation;
 
 namespace Sample.Application.Personal.Dto;
 
-public class ChangePersonalPasswordRequest
+public class ChangePersonalPasswordRequest:IShouldValidate
 {
     public string CurrentPassword { get; set; } = default!;
     public string NewPassword { get; set; } = default!;
