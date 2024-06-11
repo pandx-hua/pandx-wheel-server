@@ -4,7 +4,7 @@ using Sample.Domain;
 
 namespace Sample.Application.Books.Dto;
 
-public class GetBooksRequest:PagedRequest,ISortedRequest,IFilteredRequest,IShouldNormalize
+public class GetBooksRequest : PagedRequest, ISortedRequest, IFilteredRequest, IShouldNormalize
 {
     public GetBooksRequest()
     {
@@ -12,10 +12,11 @@ public class GetBooksRequest:PagedRequest,ISortedRequest,IFilteredRequest,IShoul
         StartTime = new DateTime(1900, 1, 1, 0, 0, 0);
         EndTime = new DateTime(2099, 12, 31, 23, 59, 59);
     }
+
     public DateTime StartTime { get; set; }
     public DateTime EndTime { get; set; }
-    public string? Sorting { get; set; }
     public string? Filter { get; set; }
+
     public void Normalize()
     {
         if (string.IsNullOrWhiteSpace(Sorting))
@@ -25,4 +26,6 @@ public class GetBooksRequest:PagedRequest,ISortedRequest,IFilteredRequest,IShoul
 
         Filter = Filter?.Trim();
     }
+
+    public string? Sorting { get; set; }
 }

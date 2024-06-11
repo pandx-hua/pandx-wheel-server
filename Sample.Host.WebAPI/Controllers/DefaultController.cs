@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using pandx.Wheel.Authorization;
 using pandx.Wheel.BackgroundJobs;
 using pandx.Wheel.Controllers;
@@ -10,6 +11,7 @@ using Sample.Domain.Notifications;
 
 namespace Sample.Host.WebAPI.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("[controller]/[action]")]
 public class DefaultController : WheelControllerBase

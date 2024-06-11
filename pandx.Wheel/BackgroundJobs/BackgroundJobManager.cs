@@ -61,11 +61,11 @@ public class BackgroundJobManager : IBackgroundJobManager
         return await _backgroundJobRepository.GetAllAsync();
     }
 
-    public  Task<Dictionary<string, string>> GetExposedBackgroundJobsAsync()
+    public Task<Dictionary<string, string>> GetExposedBackgroundJobsAsync()
     {
         var exposedBackgroundJobs = AssemblyHelper.GetReferencedAssemblies()
             .SelectMany(a => a.GetTypes().Where(t => t.IsDefined(typeof(ExposedJobAttribute), true)));
-         return Task.FromResult(exposedBackgroundJobs
+        return Task.FromResult(exposedBackgroundJobs
             .ToDictionary(t => t.FullName!,
                 t => $"{t.FullName}（{t.GetCustomAttribute<ExposedJobAttribute>()!.Description}）"));
     }

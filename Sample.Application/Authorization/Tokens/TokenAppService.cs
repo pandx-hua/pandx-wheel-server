@@ -3,11 +3,9 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using pandx.Wheel.Auditing;
 using pandx.Wheel.Authorization;
 using pandx.Wheel.Authorization.Logins;
 using pandx.Wheel.Authorization.Tokens;
-using pandx.Wheel.Domain.Repositories;
 using pandx.Wheel.Exceptions;
 using pandx.Wheel.Miscellaneous;
 using pandx.Wheel.Security;
@@ -19,9 +17,9 @@ namespace Sample.Application.Authorization.Tokens;
 public class TokenAppService : SampleAppServiceBase, ITokenAppService
 {
     private readonly IClientInfoProvider _clientInfoProvider;
+    private readonly ILoginService _loginService;
     private readonly IOptions<SecuritySettings> _securitySettingsOptions;
     private readonly ITokenService<ApplicationUser> _tokenService;
-    private readonly ILoginService _loginService;
 
     public TokenAppService(ITokenService<ApplicationUser> tokenService,
         IOptions<SecuritySettings> securitySettingsOptions,
@@ -72,7 +70,7 @@ public class TokenAppService : SampleAppServiceBase, ITokenAppService
         }
 
         var ipAddress = _clientInfoProvider.ClientIpAddress ?? string.Empty;
-        
+
         await _loginService.CreateLoginAttemptAsync(request.UserNameOrEmail, LoginResultType.Success,
             user.Id);
         return await CreateTokenAndUpdateUser(user, ipAddress);

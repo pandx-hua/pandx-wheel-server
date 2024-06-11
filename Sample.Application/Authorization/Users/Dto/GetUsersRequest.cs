@@ -16,7 +16,7 @@ public class GetUsersRequest : PagedRequest, ISortedRequest, IFilteredRequest, I
 
     public DateTime StartTime { get; set; }
     public DateTime EndTime { get; set; }
-    
+
     public List<Gender> Gender { get; set; } =
         [pandx.Wheel.Authorization.Users.Gender.Female, pandx.Wheel.Authorization.Users.Gender.Male];
 

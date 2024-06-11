@@ -1,5 +1,4 @@
 ﻿using pandx.Wheel.Application.Services;
-using pandx.Wheel.DependencyInjection;
 using pandx.Wheel.Models;
 using Sample.Application.Personal.Dto;
 

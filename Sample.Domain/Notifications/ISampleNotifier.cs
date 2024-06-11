@@ -1,5 +1,4 @@
-﻿using pandx.Wheel.DependencyInjection;
-using pandx.Wheel.Domain.Services;
+﻿using pandx.Wheel.Domain.Services;
 using pandx.Wheel.Notifications;
 
 namespace Sample.Domain.Notifications;

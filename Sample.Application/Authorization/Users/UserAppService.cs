@@ -26,17 +26,17 @@ namespace Sample.Application.Authorization.Users;
 public class UserAppService : SampleAppServiceBase, IUserAppService
 {
     private readonly IBackgroundJobLauncher _backgroundJobLauncher;
+    private readonly IBinaryObjectManager _binaryObjectManager;
     private readonly ICachedFileManager _cachedFileManager;
     private readonly IEventPublisher _eventPublisher;
-    private readonly IUploadFileManager _uploadFileManager;
     private readonly INotificationPublisher _notificationPublisher;
     private readonly INotificationSubscriptionManager _notificationSubscriptionManager;
     private readonly IRepository<Organization, Guid> _organizationRepository;
     private readonly IPasswordHasher<ApplicationUser> _passwordHasher;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IUploadFileManager _uploadFileManager;
     private readonly IRepository<UserOrganization> _userOrganizationRepository;
     private readonly IUsersExcelExporter _usersExcelExporter;
-    private readonly IBinaryObjectManager _binaryObjectManager;
 
     public UserAppService(IUnitOfWork unitOfWork,
         IEventPublisher eventPublisher,
@@ -107,7 +107,7 @@ public class UserAppService : SampleAppServiceBase, IUserAppService
         await FillOrganizationsAsync(dtos);
         return new PagedResponse<UsersDto>(totalCount, dtos);
     }
-    
+
     public async Task<string> GetAvatarByIdAsync(EntityDto<Guid> request)
     {
         var user = await UserService.UserManager.FindByIdAsync(request.Id.ToString()) ??
@@ -122,7 +122,7 @@ public class UserAppService : SampleAppServiceBase, IUserAppService
 
         return string.Empty;
     }
-    
+
 
     public async Task CreateOrUpdateUserAsync(CreateOrUpdateUserRequest request)
     {

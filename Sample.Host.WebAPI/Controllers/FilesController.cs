@@ -9,15 +9,16 @@ using pandx.Wheel.Storage;
 using Sample.Application.Files.Dto;
 
 namespace Sample.Host.WebAPI.Controllers;
+
 [Authorize]
 [ApiController]
 [Route("[controller]/[action]")]
 public class FilesController : WheelControllerBase
 {
+    private readonly IBinaryObjectManager _binaryObjectManager;
     private readonly ICachedFileManager _cachedFileManager;
     private readonly ICommonFolder _commonFolder;
     private readonly IMimeTypeManager _mimeTypeManager;
-    private readonly IBinaryObjectManager _binaryObjectManager;
 
     public FilesController(ICachedFileManager cachedFileManager,
         IBinaryObjectManager binaryObjectManager,
@@ -57,6 +58,7 @@ public class FilesController : WheelControllerBase
             _mimeTypeManager.GetMimeType(request.FileName!) ?? "application/octet-stream",
             request.FileName);
     }
+
     [HttpPost(Name = nameof(DownloadLargeFileFromDisk))]
     [NoAudited]
     public IActionResult DownloadLargeFileFromDisk(DownloadRequest request)
@@ -92,7 +94,7 @@ public class FilesController : WheelControllerBase
         {
             if (!string.IsNullOrWhiteSpace(binaryObject.ContentType))
             {
-                 request.ContentType = binaryObject.ContentType;
+                request.ContentType = binaryObject.ContentType;
             }
             else
             {

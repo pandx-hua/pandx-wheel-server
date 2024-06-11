@@ -3,7 +3,7 @@ using pandx.Wheel.Validation;
 
 namespace Sample.Application.Authorization.Users.Dto;
 
-public class ChangePasswordRequest:IShouldValidate
+public class ChangePasswordRequest : IShouldValidate
 {
     public string SuperPassword { get; set; } = default!;
     public Guid UserId { get; set; }

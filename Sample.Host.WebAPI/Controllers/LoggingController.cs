@@ -21,12 +21,14 @@ public class LoggingController : WheelControllerBase
         _logAppService = logAppService;
         _cachedFileManager = cachedFileManager;
     }
+
     [NeedPermission(SamplePermissions.Resources.Logs, SamplePermissions.Actions.Export)]
     [HttpPost(Name = nameof(DownloadLogs))]
     public async Task<CachedFile> DownloadLogs()
     {
         return await _logAppService.DownloadLogsAsync();
     }
+
     [NeedPermission(SamplePermissions.Resources.Logs, SamplePermissions.Actions.Search)]
     [HttpPost(Name = nameof(GetLatestLogs))]
     [NoAudited]

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using pandx.Wheel.Authorization.Permissions;
 using pandx.Wheel.Controllers;
 using pandx.Wheel.Models;
@@ -7,6 +8,7 @@ using Sample.Application.Authorization.Permissions.Dto;
 
 namespace Sample.Host.WebAPI.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("[controller]/[action]")]
 public class PermissionsController : WheelControllerBase

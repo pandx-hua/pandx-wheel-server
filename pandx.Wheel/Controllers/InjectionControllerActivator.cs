@@ -26,7 +26,7 @@ public class InjectionControllerActivator : IControllerActivator
                 }
             }
         }
-        
+
         return controller;
     }
 

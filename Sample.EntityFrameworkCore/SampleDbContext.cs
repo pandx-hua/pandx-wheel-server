@@ -16,7 +16,6 @@ public class
         ILogger<WheelDbContext<ApplicationUser, ApplicationRole, ApplicationUserClaim, ApplicationRoleClaim>> logger) :
         base(options, eventPublisher, currentUser, logger)
     {
-       
     }
 
     public DbSet<Book> Books { get; set; } = default!;

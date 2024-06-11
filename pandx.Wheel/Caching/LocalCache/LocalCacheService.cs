@@ -10,11 +10,12 @@ public class LocalCacheService : ICacheService
     private readonly TimeSpan _expiration;
     private readonly ILogger<LocalCacheService> _logger;
 
-    public LocalCacheService(ILogger<LocalCacheService> logger, IMemoryCache cache,IOptions<CacheSettings> cacheSettings)
+    public LocalCacheService(ILogger<LocalCacheService> logger, IMemoryCache cache,
+        IOptions<CacheSettings> cacheSettings)
     {
         _logger = logger;
         _cache = cache;
-        _expiration= TimeSpan.FromMinutes(cacheSettings.Value.SlidingExpirationInMinutes);
+        _expiration = TimeSpan.FromMinutes(cacheSettings.Value.SlidingExpirationInMinutes);
     }
 
     public T? Get<T>(string key)

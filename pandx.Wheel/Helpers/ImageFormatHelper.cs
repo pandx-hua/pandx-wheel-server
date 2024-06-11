@@ -1,7 +1,6 @@
 ﻿using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats;
 
-
 namespace pandx.Wheel.Helpers;
 
 public class ImageFormatHelper

@@ -3,7 +3,7 @@ using pandx.Wheel.Validation;
 
 namespace Sample.Application.Personal.Dto;
 
-public class UpdatePersonalRequest:IShouldValidate
+public class UpdatePersonalRequest : IShouldValidate
 {
     public PersonalDto User { get; set; } = default!;
     public CachedFile? CachedFile { get; set; }
@@ -11,8 +11,4 @@ public class UpdatePersonalRequest:IShouldValidate
 
 public class UpdatePersonalRequestValidator : CustomValidator<UpdatePersonalRequest>
 {
-    public UpdatePersonalRequestValidator()
-    {
-        
-    }
 }

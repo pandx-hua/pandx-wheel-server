@@ -1,11 +1,9 @@
 ﻿using System.Linq.Dynamic.Core;
-using System.Reflection;
 using Cronos;
 using Microsoft.EntityFrameworkCore;
 using pandx.Wheel.Application.Dto;
 using pandx.Wheel.BackgroundJobs;
 using pandx.Wheel.Extensions;
-using pandx.Wheel.Helpers;
 using pandx.Wheel.Models;
 using Quartz;
 using Sample.Application.BackgroundJobs.Dto;
@@ -74,7 +72,8 @@ public class BackgroundJobAppService : SampleAppServiceBase, IBackgroundJobAppSe
         // return Task.FromResult(new ListResponse<KeyValuePair<string, string>>(exposedBackgroundJobs
         //     .ToDictionary(t => t.FullName!,
         //         t => $"{t.GetCustomAttribute<ExposedJobAttribute>()!.Description}-{t.FullName}").ToList()));
-        return new ListResponse<KeyValuePair<string, string>>((await _backgroundJobManager.GetExposedBackgroundJobsAsync()).ToList());
+        return new ListResponse<KeyValuePair<string, string>>(
+            (await _backgroundJobManager.GetExposedBackgroundJobsAsync()).ToList());
     }
 
     public async Task ChangeBackgroundJobStatusAsync(ChangeBackgroundJobStatusRequest request)

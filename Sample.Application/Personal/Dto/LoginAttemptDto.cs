@@ -6,7 +6,7 @@ public class LoginAttemptDto
 {
     public Guid Id { get; set; }
     public DateTime CreationTime { get; set; }
-    
+
     public Guid? UserId { get; set; }
     public string UserNameOrEmail { get; set; } = default!;
     public string? ClientIpAddress { get; set; } = default!;

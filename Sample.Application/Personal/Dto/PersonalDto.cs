@@ -1,5 +1,4 @@
-﻿using pandx.Wheel.Application.Dto;
-using pandx.Wheel.Authorization.Users;
+﻿using pandx.Wheel.Authorization.Users;
 
 namespace Sample.Application.Personal.Dto;
 
@@ -11,6 +10,6 @@ public class PersonalDto
     public string Email { get; set; } = default!;
 
     public string PhoneNumber { get; set; } = default!;
-    
+
     public Gender Gender { get; set; }
 }

@@ -1,5 +1,4 @@
 ﻿using pandx.Wheel.Events;
-using Sample.Application.Books.Events;
 
 namespace Sample.Application.Common;
 

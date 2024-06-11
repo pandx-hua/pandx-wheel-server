@@ -15,9 +15,9 @@ public sealed class ApplicationUser : WheelUser, ISoftDelete
 
     public List<UserOrganization> Organizations { get; set; } = default!;
     public List<IdentityUserRole<Guid>> Roles { get; set; } = default!;
+    public Guid? AvatarId { get; set; }
 
     public bool IsDeleted { get; set; }
-    public Guid? AvatarId { get; set; }
 
     public void Unlock()
     {

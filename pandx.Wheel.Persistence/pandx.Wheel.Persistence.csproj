@@ -15,26 +15,26 @@
         <RepositoryUrl>https://github.com/pandx-hua/pandx-wheel-server</RepositoryUrl>
         <Authors>HuaHai</Authors>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-      <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
     <ItemGroup>
-      <None Include="..\README.md">
-        <Pack>True</Pack>
-        <PackagePath>\</PackagePath>
-      </None>
-      <None Include="C:\Users\pandx\Desktop\pandx.png">
-        <Pack>True</Pack>
-        <PackagePath>\</PackagePath>
-      </None>
+        <None Include="..\README.md">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+        <None Include="C:\Users\pandx\Desktop\pandx.png">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\pandx.Wheel\pandx.Wheel.csproj" />
+        <ProjectReference Include="..\pandx.Wheel\pandx.Wheel.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0"/>
     </ItemGroup>
 
 </Project>

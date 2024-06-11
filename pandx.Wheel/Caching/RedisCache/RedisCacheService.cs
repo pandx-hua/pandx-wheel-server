@@ -13,12 +13,13 @@ public class RedisCacheService : ICacheService
     private readonly ILogger<RedisCacheService> _logger;
     private readonly ISerializerService _serializer;
 
-    public RedisCacheService(IDistributedCache cache, ILogger<RedisCacheService> logger, ISerializerService serializer,IOptions<CacheSettings> cacheSettings)
+    public RedisCacheService(IDistributedCache cache, ILogger<RedisCacheService> logger, ISerializerService serializer,
+        IOptions<CacheSettings> cacheSettings)
     {
         _cache = cache;
         _logger = logger;
         _serializer = serializer;
-        _expiration= TimeSpan.FromMinutes(cacheSettings.Value.SlidingExpirationInMinutes);
+        _expiration = TimeSpan.FromMinutes(cacheSettings.Value.SlidingExpirationInMinutes);
     }
 
     public T? Get<T>(string key)

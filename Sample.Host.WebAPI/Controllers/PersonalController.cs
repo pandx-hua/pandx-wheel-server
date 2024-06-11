@@ -13,6 +13,7 @@ using Sample.Application.Personal;
 using Sample.Application.Personal.Dto;
 
 namespace Sample.Host.WebAPI.Controllers;
+
 [Authorize]
 [ApiController]
 [Route("[controller]/[action]")]
@@ -39,6 +40,7 @@ public class PersonalController : WheelControllerBase
         return await _personalAppService.GetPersonalAsync();
     }
 
+    [AllowAnonymous]
     [HttpPost(Name = nameof(GetToken))]
     [NoAudited]
     public async Task<TokenResponse> GetToken(GetTokenRequest request)
@@ -59,6 +61,7 @@ public class PersonalController : WheelControllerBase
     {
         return await _menuAppService.GetMenusAsync();
     }
+
     [HttpPost(Name = nameof(UpdateUser))]
     [NeedPermission]
     public async Task<PersonalDto> UpdateUser(UpdatePersonalRequest request)
@@ -73,12 +76,12 @@ public class PersonalController : WheelControllerBase
     }
 
     [HttpPost(Name = nameof(GetLoginAttempts))]
-    public  async Task<ListResponse<LoginAttemptDto>> GetLoginAttempts()
+    public async Task<ListResponse<LoginAttemptDto>> GetLoginAttempts()
     {
         return await _personalAppService.GetLoginAttemptsAsync();
     }
-    
-    [HttpPost(Name=nameof(UploadAvatar))]
+
+    [HttpPost(Name = nameof(UploadAvatar))]
     public async Task UploadAvatar()
     {
         await _personalAppService.UploadAvatarAsync();
@@ -89,5 +92,4 @@ public class PersonalController : WheelControllerBase
     {
         return await _personalAppService.GetAvatarAsync();
     }
-
 }

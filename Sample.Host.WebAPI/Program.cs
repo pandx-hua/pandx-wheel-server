@@ -52,8 +52,9 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
     }
+
     //forwardedHeaders
-    app.UseForwardedHeaders(new ForwardedHeadersOptions()
+    app.UseForwardedHeaders(new ForwardedHeadersOptions
     {
         ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
     });

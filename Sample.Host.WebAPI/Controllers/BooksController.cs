@@ -21,25 +21,28 @@ public class BookController : WheelControllerBase
     {
         _bookAppService = bookAppService;
     }
-    
+
     [NeedPermission(SamplePermissions.Resources.Books, SamplePermissions.Actions.Create)]
     [HttpPost(Name = nameof(CreateBook))]
     public async Task CreateBook(CreateOrUpdateBookRequest request)
     {
         await _bookAppService.CreateBookAsync(request);
     }
+
     [NeedPermission(SamplePermissions.Resources.Books, SamplePermissions.Actions.Update)]
     [HttpPost(Name = nameof(UpdateBook))]
     public async Task UpdateBook(CreateOrUpdateBookRequest request)
     {
         await _bookAppService.UpdateBookAsync(request);
     }
+
     [NeedPermission(SamplePermissions.Resources.Books, SamplePermissions.Actions.Delete)]
     [HttpPost(Name = nameof(DeleteBook))]
     public async Task DeleteBook(EntityDto<long> request)
     {
         await _bookAppService.DeleteBookAsync(request);
     }
+
     [NeedPermission(SamplePermissions.Resources.Books, SamplePermissions.Actions.Search)]
     [HttpPost(Name = nameof(GetPagedBooks))]
     [NoAudited]

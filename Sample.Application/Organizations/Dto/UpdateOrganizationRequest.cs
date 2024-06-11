@@ -3,7 +3,7 @@ using pandx.Wheel.Validation;
 
 namespace Sample.Application.Organizations.Dto;
 
-public class UpdateOrganizationRequest:IShouldValidate
+public class UpdateOrganizationRequest : IShouldValidate
 {
     public Guid Id { get; set; }
     public string DisplayName { get; set; } = default!;

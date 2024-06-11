@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using FluentValidation;
 using pandx.Wheel.Domain.Entities;
-using pandx.Wheel.Validation;
 
 namespace Sample.Domain.Books;
 
