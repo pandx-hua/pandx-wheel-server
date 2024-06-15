@@ -23,7 +23,7 @@
             <Pack>True</Pack>
             <PackagePath>\</PackagePath>
         </None>
-        <None Include="C:\Users\pandx\Desktop\pandx.png">
+        <None Include=".\pandx.png">
             <Pack>True</Pack>
             <PackagePath>\</PackagePath>
         </None>

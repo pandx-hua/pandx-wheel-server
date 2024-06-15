@@ -57,7 +57,6 @@ public abstract class WheelDbContext<TUser, TRole, TUserClaim, TRoleClaim> : Ide
         //应用全局查询过滤器，需要放置在base.OnModelCreating之前
         modelBuilder.ConfigureGlobalQueryFilter<ISoftDelete>(e => !e.IsDeleted);
 
-
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<IdentityUserLogin<Guid>>(e => e.ToTable("UserLogins"));
         modelBuilder.Entity<IdentityUserToken<Guid>>(e => e.ToTable("UserTokens"));
@@ -97,7 +96,6 @@ public abstract class WheelDbContext<TUser, TRole, TUserClaim, TRoleClaim> : Ide
                         entry.Entity.DeletionTime = DateTime.Now;
                         entry.State = EntityState.Modified;
                     }
-
                     break;
             }
 
